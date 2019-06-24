@@ -1,0 +1,8 @@
+.card-body {
+    height: 30em;
+    overflow-y: auto;
+}
+.card-header th {
+    padding: 0;
+    margin: 0;
+}

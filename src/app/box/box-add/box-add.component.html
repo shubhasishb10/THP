@@ -1,0 +1,83 @@
+<div class="card text-center">
+  <div class="card-header">
+    Add Box
+  </div>
+  <div class="card-body">
+    <form>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>
+              <label for="formNameField">Name</label>
+            </td>
+            <td>
+              <input name="name" type="text" [(ngModel)]="box.name" class="form-control" id="formNameField" placeholder="Enter the box name">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formLabelField">Label</label>
+            </td>
+            <td>
+              <input name="label" type="text" [(ngModel)]="box.number" class="form-control" id="formLabelField" placeholder="Enter the box label">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formLocationField">Location</label>
+            </td>
+            <td>
+              <input name="location" type="text" [(ngModel)]="box.location" class="form-control" id="formLocationField" placeholder="Enter the location of the box">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formCapacityField">Capacity</label>
+            </td>
+            <td>
+              <input name="capacity" type="text" [(ngModel)]="box.capacity" class="form-control" id="formCapacityField" placeholder="Enter the box capacity">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formCountField">Count</label>
+            </td>
+            <td>
+              <input name="count" type="email" [(ngModel)]="box.count" class="form-control" id="formCountField" placeholder="Enter the number of box">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div class="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect2">Example multiple select</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div> -->
+    </form>
+  </div>
+  <div class="card-footer text-muted">
+    <input type="submit" (click)="saveBoxDetails()" class="btn btn-outline-primary">
+    <div class="green-text" *ngIf="!hideSuccess">
+        <i><i class="fa fa-check-circle" aria-hidden="true"></i> Box saved successfully</i>
+    </div>
+  </div>
+</div>

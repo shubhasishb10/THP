@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="col-xs-12">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button [disabled]="medicineCount <= 0 || areaDisable" 
+              type="button"  *ngIf="!areaDisable"
+              class="btn btn-outline-danger"
+              (click) = "adjustRemove()"
+            >
+              <i class="fa fa-minus"></i>
+            </button>
+            <button disabled
+                            class="btn btn-outline-secondary px-4" style="color: rgb(97, 95, 95); font-weight: 800;" > {{ medicineCount }} </button>
+            <button type="button"  *ngIf="!areaDisable" class="btn btn-outline-success" [disabled]="areaDisable"
+              (click)="adjustAdd()"
+            >
+              <i class="fa fa-plus"></i>
+            </button>
+        </div>
+    </div>
+</div>

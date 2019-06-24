@@ -1,0 +1,125 @@
+<div class="card text-center">
+  <div class="card-header">
+    Add Box
+  </div>
+  <div class="card-body">
+    <form>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>
+              <label for="formNameField">Name:</label>
+            </td>
+            <td>
+              <input name="name" type="text" [(ngModel)]="medicine.name" class="form-control" id="formNameField"
+                placeholder="Enter the box name">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formCompanyField">Company:</label>
+            </td>
+            <td>
+              <input name="company" type="text" [(ngModel)]="medicine.company" class="form-control" id="formLabelField"
+                placeholder="Enter the box label">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formPriceField">Price:</label>
+            </td>
+            <td>
+              <input name="price" type="number" [(ngModel)]="medicine.price" class="form-control" id="formLocationField"
+                placeholder="Enter the location of the box">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formCapacityField">Mfg Date:</label>
+            </td>
+            <td>
+              <input name="mfgDate" type="date" [(ngModel)]="medicine.mfgDate" class="form-control"
+                id="formCapacityField" placeholder="Enter the box capacity">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formCountField">Exp Date:</label>
+            </td>
+            <td>
+              <input name="expDate" type="date" [(ngModel)]="medicine.expDate" class="form-control" id="formCountField"
+                placeholder="Enter the number of box">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formBoxField">Box:</label>
+            </td>
+            <td>
+              <select name="boxNumer" [(ngModel)]="medicine.boxes[0]" class="form-control" id="formBoxField">
+                <option *ngFor="let box of boxes" [ngValue]="box">{{ box.number }}</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formQuantityField">Quantity:</label>
+            </td>
+            <td>
+              <select class="form-control" id="formQuantityField">
+                <option *ngFor="let mq of medQtyKeys; let rIndex = index" value="medQtyValues[rIndex]">{{ mq }}</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="formCountField">Count:</label>
+            </td>
+            <td>
+              <input name="count" type="number" [(ngModel)]="medicine.count" class="form-control" id="formCountField"
+                placeholder="Enter the count">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="exampleFormControlTextarea1">Description:</label>
+            </td>
+            <td>
+              <textarea name="description" [(ngModel)]="medicine.description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div class="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div> -->
+      <!--<div class="form-group">
+          <label for="exampleFormControlSelect2">Example multiple select</label>
+          <select multiple class="form-control" id="exampleFormControlSelect2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Example textarea</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>-->
+    </form>
+  </div>
+  <div class="card-footer text-muted">
+    <input type="submit" (click)="saveMedicineDetails()" class="btn btn-outline-primary">
+    <div class="green-text" *ngIf="!hideSuccess">
+      <i><i class="fa fa-check-circle" aria-hidden="true"></i> Box saved successfully</i>
+    </div>
+  </div>
+</div>

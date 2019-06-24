@@ -1,0 +1,29 @@
+<div class="card text-center">
+    <div class="card-body">
+        <div class="row">
+            <table class="table table-striped table-hover" style="text-align: center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Label</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let box of boxes">
+                        <td> {{ box.id }} </td>
+                        <td> {{ box.name }} </td>
+                        <td> {{ box.number }} </td>
+                        <td> {{ box.capacity }} </td>
+                        <td> {{ box.count }} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+      <app-pagination-control-bar></app-pagination-control-bar>
+    </div>
+</div>
