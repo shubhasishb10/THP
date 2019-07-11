@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="print">
+          Tarini Homoeo Pharmacy
+        </h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-borderless">
+          <tr class="no-print">
+            <td><u>Medicine Name</u></td>
+            <td><u>Medicine Quantity</u></td>
+            <td><u>Medicine Price</u></td>
+            <td><u>Count</u></td>
+            <td><u>Total</u></td>
+          </tr>
+          <tr *ngFor="let o of orders; let i = index">
+            <td>{{ o.medicine.name }}</td>
+            <td>{{ o.medicine.quantity | resolveMl : o.medicine.quantity }}</td>
+            <td>{{ o.medicine.price }}</td>
+            <td>{{ o.count }}</td>
+            <td class="text-right">{{ o.medicine.price * o.count }}</td>
+          </tr>
+        </table>
+        <div class="row">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6">
+            <table class="table table-borderless text-right">
+              <tr>
+                <td>Total</td>
+                <td>450.36</td>
+              </tr>
+              <tr>
+                <td>GST@6%</td>
+                <td>450.36</td>
+              </tr>
+              <tr>
+                <td>Discount</td>
+                <td>125</td>
+              </tr>
+            </table>
+            <hr />
+            <b class="pull-right">4563.00</b>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center text-muted no-print">
+        <button class="btn btn-outline-primary mx-5" data-toggle="modal" data-target="#cartModal">Email</button>
+        <button (click)="submitData()" id="submit" class="btn btn-outline-info mx-5" [disabled]="submitConfirm">
+            <i class="fa fa-check-circle" *ngIf="isSubmitting ? false : submitConfirm" aria-hidden="true"></i>
+            <img *ngIf="isSubmitting" src="/assets/gifs/Rolling-0.4s-55px.gif">
+            {{ isSubmitting ? '' : submitConfirm ? 'Submitted' : 'Submit' }}
+        </button>
+        <button routerLink="/medicine/list" class="btn btn-outline-danger mx-5">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Model Window -->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Email Invoice</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center">
+                    <table class="table table-default table-borderless">
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td>
+                                    <input class="form-control" type="text" name="custName" [(ngModel)]="custName" />
+                                </td>
+                            </tr>
+                            <tr>
+                              <td>Email</td>
+                              <td>
+                                  <input class="form-control" type="email" name="custEmail" [(ngModel)]="custEmail" />
+                              </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer py-0 my-0">
+                    <table class="table table-borderless text-center">
+                        <th></th>
+                        <th><button class="btn btn-outline-danger btn-lg">Send</button></th>
+                        <th></th>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

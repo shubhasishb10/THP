@@ -6,11 +6,13 @@ import { boxRoutes } from './box.route';
 import { BoxAddComponent } from './box-add/box-add.component';
 import { BoxListComponent } from './box-list/box-list.component';
 import { CommonMModule } from '../common/common.module';
+import { BoxDetailsComponent } from './box-details/box-details.component';
 
 @NgModule({
   declarations: [
     BoxAddComponent,
-    BoxListComponent
+    BoxListComponent,
+    BoxDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -15,6 +15,7 @@ export class AddToOrderIconFunComponent implements OnInit {
   @Output() medicineRemove = new EventEmitter();
   @Input() areaDisable: boolean = false;
   @Input() medicineCount: number = 0;
+  @Input() maxCount:number = 0;
 
   constructor() { }
 

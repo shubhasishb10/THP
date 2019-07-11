@@ -1,3 +1,5 @@
+import { Medicine } from './medicine.model';
+
 export interface Box {
     id: number,
     name: string,
@@ -5,5 +7,6 @@ export interface Box {
     location: string,
     capacity: number,
     count: number,
-    createdDate: Date
+    createdDate: Date,
+    medicines: Array<Medicine>
 }

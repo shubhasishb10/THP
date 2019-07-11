@@ -9,18 +9,24 @@ import { medicineRoutes } from './medicine.route';
 import { AddToOrderIconFunComponent } from '../common/add-to-order-icon-fun/add-to-order-icon-fun.component';
 import { PaginationControlBarComponent } from '../common/pagination-control-bar/pagination-control-bar.component';
 import { CommonMModule } from '../common/common.module';
+import { ResolveMlPipe } from './medicine.pipe';
 
 @NgModule({
   declarations: [
     MedicineAddComponent,
     MedicineListComponent,
-    AddToOrderIconFunComponent
+    AddToOrderIconFunComponent,
+    ResolveMlPipe
   ],
   imports: [
     FormsModule,
     CommonModule,
     CommonMModule,
     RouterModule.forChild(medicineRoutes)
+  ],
+  exports: [
+    AddToOrderIconFunComponent,
+    ResolveMlPipe
   ]
 })
 export class MedicineModule { }

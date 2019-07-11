@@ -10,7 +10,7 @@
             </button>
             <button disabled
                             class="btn btn-outline-secondary px-4" style="color: rgb(97, 95, 95); font-weight: 800;" > {{ medicineCount }} </button>
-            <button type="button"  *ngIf="!areaDisable" class="btn btn-outline-success" [disabled]="areaDisable"
+            <button type="button"  *ngIf="!areaDisable" class="btn btn-outline-success" [disabled]="medicineCount >= maxCount"
               (click)="adjustAdd()"
             >
               <i class="fa fa-plus"></i>

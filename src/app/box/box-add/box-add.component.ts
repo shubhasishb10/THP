@@ -24,6 +24,7 @@ export class BoxAddComponent implements OnInit {
       capacity: 0,
       count: 1,
       createdDate: new Date(),
+      medicines: [],
       location: ''
     };
   }

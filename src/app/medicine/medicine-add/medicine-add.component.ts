@@ -27,21 +27,31 @@ export class MedicineAddComponent implements OnInit {
       count: 0,
       createdDate: new Date(),
       description: '',
-      expDate: new Date("00/00/0000"),
-      mfgDate: new Date("00/00/0000"),
+      expDate: new Date(),
+      mfgDate: new Date(),
       name: '',
       price: 0.00,
-      quantity: 100
+      quantity: 0
     }
   }
   loadQuantityEnum(){
-    this.medQtyKeys = Object.keys(MedQty);
-    this.medQtyKeys = this.medQtyKeys.splice(this.medQtyKeys.length/2, this.medQtyKeys.length);
-    //this.medQtyValues = this.medQtyKeys.splice(this.medQtyKeys.length/2);
+    console.log(MedQty);
+    console.log(Object.keys(MedQty));
+    let tempArr = Array.from(Object.keys(MedQty));
+    for(let v=0;v<tempArr.length;v++){
+      if(v < (tempArr.length/2) ){
+        this.medQtyValues.push(tempArr[v]);
+      }
+      else {
+        this.medQtyKeys.push(tempArr[v]);
+      }
+    }
+    console.log(this.medQtyKeys);
+    console.log(this.medQtyValues);
   }
   loadBoxes(){
-    this.http.get('http://localhost:8080/box/all').subscribe( (response: Box[]) => {
-      this.boxes = response;
+    this.http.get('http://localhost:8080/box/all?pn=0&ps=100').subscribe( (response: any) => {
+      this.boxes = response.content;
       console.log(this.boxes);
     })
   }
@@ -54,10 +64,13 @@ export class MedicineAddComponent implements OnInit {
     console.log(this.medicine);
     this.http.post('http://localhost:8080/medicine', this.medicine, {
       headers: { 'ContentType' : 'application/json' }
-    } ).subscribe(response=>{console.log(response);this.hideSuccess = false;});
-    setTimeout(() => {
-      this.hideSuccess = true;
-    }, 3000);
-    this.loadMedicine();
+    } ).subscribe(response=>{
+      console.log(response);
+      this.hideSuccess = false;
+      setTimeout(() => {
+        this.hideSuccess = true;
+      }, 3000);
+    });
+    //this.loadMedicine();
   }
 }

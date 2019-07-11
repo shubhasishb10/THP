@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">{{ box.number }}</div>
+    <div class="card-body">
+      <p *ngIf="box.medicines.length === 0" class="text-center">No Medicines </p>
+      <table *ngIf="!(box.medicines.length === 0)" class="table table-borderless table-hover">
+        <thead class="alert alert-secondary">
+          <tr>
+            <td>Name</td>
+            <td>Company</td>
+            <td>Price</td>
+            <td>MfgDate</td>
+            <td>ExpDate</td>
+            <td>ML</td>
+            <td>Count</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let m of box.medicines">
+            <td>{{ m.name }}</td>
+            <td>{{ m.company }}</td>
+            <td>{{ m.price }}</td>
+            <td>{{ m.mfgDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{ m.expDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{ m.quantity }}</td>
+            <td>{{ m.count }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

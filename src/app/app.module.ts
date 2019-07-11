@@ -9,6 +9,7 @@ import { MedicineModule } from './medicine/medicine.module';
 import { PaginationControlBarComponent } from './common/pagination-control-bar/pagination-control-bar.component';
 import { BoxAddComponent } from './box/box-add/box-add.component';
 import { BoxModule } from './box/box.module';
+import { OrderReviewComponent } from './order/order-review/order-review.component';
 // import { AddToOrderIconFunComponent } from './common/add-to-order-icon-fun/add-to-order-icon-fun.component';
 
 @NgModule({

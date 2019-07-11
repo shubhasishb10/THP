@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="card text-center">
+    <div class="card">
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-8">
@@ -7,14 +7,14 @@
                         <input name="srchBox" [(ngModel)]="srchStr" class="form-control mr-sm-2" type="search"
                             placeholder="Search" aria-label="Search">
                         <button *ngIf="showSearch" class="btn btn-outline-success my-2 my-sm-0"
-                            (click)="searchMedicineByName()" type="submit">Search</button>
+                            (click)="loadSearchMedicine()" type="submit">Search</button>
                         <button *ngIf="showClear" class="btn btn-outline-danger my-2 my-sm-0" (click)="resetSrchBox()"
                             type="submit">Clear</button>
                     </form>
                 </div>
                 <div class="col-sm-4">
                     <div class="btn-group pull-right" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" (click)="resetModalWindow()" data-target="#cartModal">
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#cartModal">
                             <div class="row">
                                 <div class="col-xs-6">
                                     <i class="fa fa-shopping-cart" style="font-size: 2em;" aria-hidden="true"></i>
@@ -45,15 +45,15 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let medicine of medicines">
-                            <th scope="row">1</th>
+                            <th scope="row">{{ medicine.id }}</th>
                             <td>{{ medicine.company }}</td>
                             <td>{{ medicine.price }}</td>
-                            <td>{{ medicine.name }}</td>
-                            <td>{{ medicine.quantity }}</td>
+                            <td  [ngClass]="{'alert alert-danger' : medicine.count == 0}">{{ medicine.name }}</td>
+                            <td>{{ medicine.quantity | resolveMl: medicine.quantity }}</td>
                             <td>{{ medicine.count }}</td>
                             <td>
                                 <app-add-to-order-icon-fun (medicineAdd)="onAddingMedicineToOrder($event)"
-                                    (medicineRemove)="onRemovingMedicineFromOrder($event)" [medicine]="medicine">
+                                    (medicineRemove)="onRemovingMedicineFromOrder($event)" [maxCount]="medicine.count" [medicine]="medicine">
                                 </app-add-to-order-icon-fun>
                             </td>
                         </tr>
@@ -61,8 +61,12 @@
                 </table>
             </div>
         </div>
-        <div class="card-footer text-muted">
-            <app-pagination-control-bar>
+        <div class="card-footer text-muted text-center">
+            <app-pagination-control-bar [totalPage]="totalPages + 1"
+                                        [currentPage]="pageNumber + 1"
+                            [isFirstPage]="pageNumber === 0" 
+                            [isLastPage]="pageNumber === totalPages"
+                            (fetchType)="resolvePagination($event)">
             </app-pagination-control-bar>
         </div>
     </div>
@@ -82,11 +86,17 @@
                     <table class="table table-default table-borderless">
                         <thead>
                             <th>Name</th>
+                            <th>Box</th>
                             <th>Count</th>
                         </thead>
                         <tbody>
                             <tr *ngFor="let v of orders">
                                 <td>{{ v.medicine.name }}</td>
+                                <td>
+                                    <select class="form-control" (change)="setBox()" [(ngModel)]="v.medicine.boxes[0]">
+                                        <option *ngFor="let b of v.medicine.boxes" [ngValue]="b">{{ b.number }}</option>
+                                    </select>
+                                </td>
                                 <td>
                                     <app-add-to-order-icon-fun [areaDisable]="true"
                                      [medicineCount]="v.count"></app-add-to-order-icon-fun>
@@ -98,7 +108,7 @@
                 <div class="modal-footer py-0 my-0">
                     <table class="table table-borderless text-center">
                         <th></th>
-                        <th><button [disabled]="orders.length <= 0" class="btn btn-info btn-lg">Order</button></th>
+                        <th><button routerLink="/order/review" (click)="setOrdersAndBox()" data-dismiss="modal" [disabled]="orders.length <= 0" class="btn btn-info btn-lg">Order</button></th>
                         <th></th>
                     </table>
                 </div>

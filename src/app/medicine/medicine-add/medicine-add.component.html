@@ -1,6 +1,6 @@
-<div class="card text-center">
+<div class="card">
   <div class="card-header">
-    Add Box
+    <h4>Add Box</h4>
   </div>
   <div class="card-body">
     <form>
@@ -57,7 +57,7 @@
             </td>
             <td>
               <select name="boxNumer" [(ngModel)]="medicine.boxes[0]" class="form-control" id="formBoxField">
-                <option *ngFor="let box of boxes" [ngValue]="box">{{ box.number }}</option>
+                <option *ngFor="let box of boxes" [ngValue]="box"> {{ box.number }} </option>
               </select>
             </td>
           </tr>
@@ -66,8 +66,8 @@
               <label for="formQuantityField">Quantity:</label>
             </td>
             <td>
-              <select class="form-control" id="formQuantityField">
-                <option *ngFor="let mq of medQtyKeys; let rIndex = index" value="medQtyValues[rIndex]">{{ mq }}</option>
+              <select name="quantity" class="form-control" [(ngModel)]="medicine.quantity" id="formQuantityField">
+                <option *ngFor="let mq of medQtyKeys; let i = index" [value]="medQtyValues[i]">{{ mq }}</option>
               </select>
             </td>
           </tr>
@@ -116,8 +116,8 @@
         </div>-->
     </form>
   </div>
-  <div class="card-footer text-muted">
-    <input type="submit" (click)="saveMedicineDetails()" class="btn btn-outline-primary">
+  <div class="card-footer text-muted text-center">
+    <input [disabled]="!hideSuccess" type="submit" (click)="saveMedicineDetails()" class="btn btn-outline-primary">
     <div class="green-text" *ngIf="!hideSuccess">
       <i><i class="fa fa-check-circle" aria-hidden="true"></i> Box saved successfully</i>
     </div>

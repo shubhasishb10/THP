@@ -15,7 +15,7 @@
                     <tr *ngFor="let box of boxes">
                         <td> {{ box.id }} </td>
                         <td> {{ box.name }} </td>
-                        <td> {{ box.number }} </td>
+                        <td><a  [routerLink]="['/box/details', box.id]">{{ box.number }}</a></td>
                         <td> {{ box.capacity }} </td>
                         <td> {{ box.count }} </td>
                     </tr>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Review Order</h4>
+      </div>
+      <div class="card-body">
+        <table class="table table-borderless">
+          <thead class="thead-dark">
+            <tr>
+              <td>Name</td>
+              <td>Count</td>
+              <td>Box</td>
+              <td>Remove</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders; let oInd = index">
+              <td>{{ order.medicine.name }}</td>
+              <td>
+                <input class="form-control" style="text-align: center" type="number" name="count"
+                  [(ngModel)]="order.count" />
+              </td>
+              <td>
+                <button disabled class="btn btn-secondary">{{ order.medicine.boxes[0].number }}</button>
+              </td>
+              <td>
+                <button (click)="removeOrder(oInd)" class="btn btn-outline-danger btn-sm">&times;</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer text-center">
+        <button routerLink="/order/confirm" (click)="confirmOrder()" class="btn btn-outline-info btn-md">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

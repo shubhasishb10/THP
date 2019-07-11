@@ -5,5 +5,6 @@ import { MedicineAddComponent } from './medicine-add/medicine-add.component';
 
 export const medicineRoutes : Routes = [
     { path : 'list', component :  MedicineListComponent },
-    { path: 'add', component : MedicineAddComponent }
+    { path: 'add', component : MedicineAddComponent },
+    { path: '', component : MedicineListComponent }
 ]
